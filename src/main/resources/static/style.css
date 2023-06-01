@@ -1,0 +1,15 @@
+.wrapper {
+    min-height: calc(100vh - 255px);
+}
+
+.logo-image {
+    height: 600px;
+    max-width: 100%;
+    background-image: url('/images/home-logo.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.statistics-info h3 {
+    font-size: 30px;
+}

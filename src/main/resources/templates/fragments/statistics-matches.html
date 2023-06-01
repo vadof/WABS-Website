@@ -1,0 +1,4 @@
+<div th:fragment="statistics-matches" class="nav nav-pills d-flex justify-content-around mb-5">
+  <li class="nav-item"><a th:href="'/' + ${player.getUsername()} + '/statistics'" class="nav-link active" aria-current="page">Statistics</a></li>
+  <li class="nav-item"><a th:href="'/' + ${player.getUsername()} + '/matches'" class="nav-link active">Matches</a></li>
+</div>

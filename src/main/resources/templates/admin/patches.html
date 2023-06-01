@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+
+<head th:insert="~{admin/fragments/head.html :: admin-head}"></head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <div th:insert="~{admin/fragments/sidebar.html :: admin-sidebar}"></div>
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <nav th:insert="~{admin/fragments/navbar.html :: admin-navbar}"></nav>
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <h1 class="text-center mt-4 mb-4">Patches</h1>
+          <a href="/admin/patch/add" class="btn btn-outline-secondary">Add new patch</a>
+        </div>
+
+
+          <div class="row mb-6">
+            <div th:each="p : ${patches}" class="col-md-6">
+              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                  <div class="d-flex justify-content-between">
+                    <strong th:text="${p.getTopic().getName()}" th:style="${'color:' + p.getTopic().getColor() + ';'}"
+                            class="d-inline-block mb-2"></strong>
+                    <strong th:class="${p.isPublished() ? 'text-success' : 'text-danger'}">
+                      Published
+                    </strong>
+                  </div>
+                  <h3 th:text="${'Patch - ' + p.getPatch()}" class="mb-0">Patch 0.2</h3>
+                  <div th:text="${p.getReleaseDate().getMonth() + ' ' + p.getReleaseDate().getDayOfMonth()}" class="mb-1 text-muted"></div>
+                  <p th:text="${p.getTitle()}" class="mb-auto"></p>
+                  <div class="d-flex justify-content-between">
+                    <a th:href="${'/admin/patch/' + p.getId()}">View full</a>
+                    <a th:href="${'/admin/patch/' + p.getId() + '/edit'}">Edit</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+    <footer th:replace="~{admin/fragments/footer.html :: admin-footer}"></footer>
+
+  </div>
+</div>
+</body>
+
+</html>

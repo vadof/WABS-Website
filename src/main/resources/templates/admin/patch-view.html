@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+
+<head th:insert="~{admin/fragments/head.html :: admin-head}"></head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div th:insert="~{admin/fragments/sidebar.html :: admin-sidebar}"></div>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:insert="~{admin/fragments/navbar.html :: admin-navbar}"></nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container">
+                <div class="d-flex justify-content-end h3">
+                    <a th:href="${'/admin/patch/' + patch.getId() + '/edit'}">Edit</a>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <h1 th:text="${'Patch ' + patch.getPatch()}" class="mb-3"></h1>
+                    <h3 th:text="${patch_date}" class="mb-5">12.06.2023</h3>
+                    <h4 th:text="${patch.getTitle()}" class="mb-4">Patch title</h4>
+                    <div th:utext="${patch.getDescription()}" class="text-left container"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <footer th:replace="~{admin/fragments/footer.html :: admin-footer}"></footer>
+
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="bg-dark">
+  <div class="wrapper">
+      <header th:insert="~{fragments/header.html :: header}"></header>
+
+      
+      
+      <div class="container mb-5">
+        <h1 class="text-center mb-4 mt-3 text-light" th:text="${'Match #' + match.getId()}"></h1>
+        <h2 class="text-center mb-4 mt-3" th:class="${match.isWin() ? 'text-success' : 'text-danger'} + ' text-center mb-4 mt-3'"
+            th:text="${match.isWin() ? 'Win' : 'Lose'}"></h2>
+        <h4 class="text-center mb-4 mt-3 text-light" th:text="${#temporals.format(match.getDate(), 'HH:mm dd/MM/yyyy')}"></h4>
+
+        <div class="table-responsive">
+            <table class="table text-light table-bordered table-responsive-md">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Player</th>
+                  <th scope="col">Kills</th>
+                  <th scope="col">Damage dealt</th>
+                  <th scope="col">Deaths</th>
+                  <th scope="col">Damage Received</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="ps : ${match.getPlayerMatchStats()}">
+                  <th scope="col">
+                      <a th:href="'/' + ${ps.getPlayer().getUsername()} + '/statistics'" th:text="${ps.getPlayer().getUsername()}" class="text-light"></a>
+                  </th>
+                  <th scope="col" th:text="${ps.getKills()}"></th>
+                  <th scope="col" th:text="${ps.getDamageDealt()}"></th>
+                  <th scope="col" th:text="${ps.getDeaths()}"></th>
+                  <th scope="col" th:text="${ps.getDamageReceived()}"></th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+      <footer class="text-center text-white">
+            <div class="container">
+                <form action="">
+                    <div class="pt-4">
+                        <h4>Subscribe to our newsletter</h4>
+                    </div>
+
+                    <div class="pt-2">
+                        <h6>Be the first to know about updates.</h6>
+                    </div>
+
+                    <div class="row d-flex justify-content-center pt-2">
+                      
+
+                      <div class="col-md-5 col-12">
+                        <div class="form-outline form-white mb-4">
+                          <input type="email" id="form5Example21" class="form-control" placeholder="Email address"/>
+                        </div>
+                      </div>
+
+                      <div>
+                        <button type="submit" class="btn btn-outline-light mb-4">
+                          Subscribe
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  
+          <div class="d-flex flex-column flex-sm-row justify-content-center py-4 border-top">
+            <p>© 2023 Company, Inc. All rights reserved.</p>
+          </div>
+        </div>
+        </footer>
+      
+</body>
+</html>

@@ -1,0 +1,33 @@
+<footer th:fragment="footer" class="text-center text-white bg-dark">
+  <div class="container">
+    <form action="/email" method="POST">
+      <div class="pt-4">
+        <h4>Subscribe to our newsletter</h4>
+      </div>
+
+      <div class="pt-2">
+        <h6>Be the first to know about updates.</h6>
+      </div>
+
+      <div class="row d-flex justify-content-center pt-2">
+
+
+        <div class="col-md-5 col-12">
+          <div class="form-outline form-white mb-4">
+            <input type="email" id="form5Example21" class="form-control" placeholder="Email address" name="email"/>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-outline-light mb-4">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-center py-4 border-top">
+      <p>© 2023 Company, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

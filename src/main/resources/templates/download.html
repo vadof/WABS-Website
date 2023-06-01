@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="bg-dark">
+<div class="wrapper">
+  <header th:insert="~{fragments/header.html :: header}"></header>
+
+
+<div class="container col-xxl-8 px-4 py-5 text-light">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="/images/download_page_image.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="600" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3 text-light">Defeat all enemies on the battlefield</h1>
+      <p class="lead">To succeed in "Wave Attack: Battle for Survival," players must master different playstyles and strategies, adapt to changing conditions, and work together as a team to overcome the challenges they face. </p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <form action="/download/jar" method="get">
+          <button type="submit" class="btn btn-primary btn-lg px-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"></path><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"></path></svg>
+            Download .jar
+          </button>
+        </form>
+
+<!--        <form action="/download/exe" method="get">-->
+<!--          <button type="submit" class="btn btn-outline-secondary btn-lg px-4">Download .exe</button>-->
+<!--        </form>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+<footer th:insert="~{fragments/footer.html :: footer}"></footer>
+
+</body>
+</html>

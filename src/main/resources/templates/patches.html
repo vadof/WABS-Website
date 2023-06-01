@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="bg-dark">
+<header th:insert="~{fragments/header.html :: header}"></header>
+
+
+<div class="wrapper mb-5">
+    <div class="bg-light pt-3 mb-5 pb-5 text">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="text-center mt-4 mb-4">Patches</h1>
+            </div>
+
+            <div class="row mb-6">
+                <div th:each="p : ${patches}" class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <div class="d-flex justify-content-between">
+                                <strong th:text="${p.getTopic().getName()}" th:style="${'color:' + p.getTopic().getColor() + ';'}"
+                                        class="d-inline-block mb-2"></strong>
+                            </div>
+                            <h3 th:text="${'Patch - ' + p.getPatch()}" class="mb-0">Patch 0.2</h3>
+                            <div th:text="${p.getReleaseDate().getMonth() + ' ' + p.getReleaseDate().getDayOfMonth()}" class="mb-1 text-muted"></div>
+                            <p th:text="${p.getTitle()}" class="mb-auto"></p>
+                            <a th:href="${'/patch/' + p.getId()}">Continue reading</a>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                            <img th:src="@{'/image/' + ${p.getImage().getId()}}" class="bd-placeholder-img" width="200" height="250" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<footer th:insert="~{fragments/footer.html :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="bg-dark">
+    <div class="wrapper">
+        <header th:insert="~{fragments/header.html :: header}"></header>
+
+      
+      
+      <div class="container mb-5">
+        <h1 class="text-center mb-4 mt-3 text-light" th:text="${player.getUsername() + ' matches'}"></h1>
+
+          <div th:insert="~{fragments/statistics-matches.html :: statistics-matches}"></div>
+
+        <div class="table-responsive">
+            <table class="table text-light table-bordered table-responsive-md">
+              <thead class="table-light">
+                <tr>
+                    <th scope="col">Match id</th>
+                    <th scope="col">Win/Lose</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Kills</th>
+                    <th scope="col">Damage dealt</th>
+                    <th scope="col">Deaths</th>
+                    <th scope="col">Damage Received</th>
+                    <th scope="col">Team size</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="match, i : ${matchList}">
+                    <th scope="col">
+                        <a th:href="'/match/' + ${match.getId()} + '/info'" th:text="${'#' + match.getId()}" class="text-light"></a>
+                    </th>
+                    <th scope="row" th:class="${match.isWin() ? 'text-success' : 'text-danger'}">
+                        <span th:text="${match.isWin() ? 'Win' : 'Lose'}"></span>
+                    </th>
+                    <th scope="col" th:text="${#temporals.format(match.getDate(), 'dd/MM/yyyy')}"></th>
+                    <th scope="col" th:text="${playerStats.get(i.index).getKills()}"></th>
+                    <th scope="col" th:text="${playerStats.get(i.index).getDamageDealt()}"></th>
+                    <th scope="col" th:text="${playerStats.get(i.index).getDeaths()}"></th>
+                    <th scope="col" th:text="${playerStats.get(i.index).getDamageReceived()}"></th>
+                    <th scope="col" th:text="${match.getPlayerMatchStats().size() + '/3'}"></th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+
+
+    </div>
+    <footer th:insert="~{fragments/footer.html :: footer}"></footer>
+      
+</body>
+</html>

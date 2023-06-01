@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="bg-dark">
+<header th:insert="~{fragments/header.html :: header}"></header>
+
+
+<div class="wrapper mb-5">
+    <div class="bg-light pt-5 mb-5 pb-5 text">
+        <div class="container mb-5">
+            <div class="d-flex flex-column text-center">
+                <h1 th:text="${'Patch ' + patch.getPatch()}" class="mb-3"></h1>
+                <h3 th:text="${patch_date}" class="mb-5">12.06.2023</h3>
+                <h4 th:text="${patch.getTitle()}" class="mb-4">Patch title</h4>
+            </div>
+            <div th:utext="${patch.getDescription()}" class="text-left container"></div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:insert="~{fragments/footer.html :: footer}"></footer>
+</body>
+</html>

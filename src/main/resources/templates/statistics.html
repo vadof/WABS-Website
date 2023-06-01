@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body class="bg-dark">
+    <header th:insert="~{fragments/header.html :: header}"></header>
+
+      
+      <div class="wrapper mb-5">
+          <div class="container mb-5">
+            <h1 class="text-center mb-4 mt-3 text-light" th:text="${player.getUsername()}"></h1>
+
+            <div th:insert="~{fragments/statistics-matches.html :: statistics-matches}"></div>
+
+            <div class="row">
+                <img src="/images/player.png" alt="player" class="col-md-4">
+                <div class="col-md-8">
+                  <div class="statistics-info mt-4">
+                    <ul class="list-group text-light">
+                      <li class="list-group-item px-3 border-0 bg-dark text-light mb-2">
+                        <div class="d-flex justify-content-between">
+                          <h3>Total games</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getTotalGames()}"></h3>
+                        </div>
+                      </li>
+                      <li class="list-group-item px-3 border-0 bg-dark text-light mb-2">
+                        <div class="d-flex justify-content-between">
+                          <h3>Victories</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getVictories()}"></h3>
+                        </div>
+                      </li>
+                      <li class="list-group-item px-3 border-0 bg-dark text-light mb-2">
+                        <div class="d-flex justify-content-between">
+                          <h3>Defeats</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getDefeats()}"></h3>
+                        </div>
+                      </li>
+                      <li class="list-group-item px-3 border-0 bg-dark text-light mb-2">
+                        <div class="d-flex justify-content-between">
+                          <h3>KD</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getKd()}"></h3>
+                        </div>
+                      </li>
+                      <li class="list-group-item px-3 border-0 bg-dark text-light mb-2">
+                        <div class="d-flex justify-content-between">
+                          <h3>Kills</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getKills()}"></h3>
+                        </div>
+                      </li>
+                      <li class="list-group-item px-3 border-0 bg-dark text-light mb-2">
+                        <div class="d-flex justify-content-between">
+                          <h3>Damage dealt</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getDamageDealt()}"></h3>
+                        </div>
+                      </li>
+                      <li class="list-group-item px-3 border-0 bg-dark text-light mb-2">
+                        <div class="d-flex justify-content-between">
+                          <h3>Deaths</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getDeaths()}"></h3>
+                        </div>
+                      </li>
+                      <li class="list-group-item px-3 border-0 bg-dark text-light">
+                        <div class="d-flex justify-content-between">
+                          <h3>Damage Received</h3>
+                          <h3 th:text="${player.getPlayerStatistics().getDamageReceived()}"></h3>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+      </div>
+    
+      
+    <footer th:insert="~{fragments/footer.html :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" data-bs-theme="auto">
+<head th:insert="~{fragments/head.html :: head}"></head>
+<body>
+    <div class="wrapper">
+        <header th:insert="~{fragments/header.html :: header}"></header>
+
+        <div class="logo-image">
+
+        </div>
+
+          <div class="bg-dark description">
+            <div class="container">
+                <div class="p-5 text-center text-white h5">
+                    Players must complete several waves as remote controlled robots to achieve their goal to steal as many resources as possible.
+                </div>
+            </div>
+          </div>
+
+
+        <div class="container">
+            <h1 class="text-center mt-4 mb-4">Updates</h1>
+            <div class="row mb-2">
+
+                <div class="col-md-6" th:each="p : ${patches}">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2"
+                                    th:style="${'color: ' + p.getTopic().getColor() + ';'}"
+                                    th:text="${p.getTopic().getName()}"></strong>
+                            <h3 class="mb-0" th:text="${'Patch ' + p.getPatch()}"></h3>
+                            <div class="mb-1 text-muted"
+                                 th:text="${p.getReleaseDate().getMonth() + ' ' + p.getReleaseDate().getDayOfMonth()}">
+                            </div>
+                            <p class="mb-auto" th:text="${p.getTitle()}"></p>
+                            <a th:href="${'/patch/' + p.getId()}">Continue reading</a>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                            <img th:src="@{'/image/' + ${p.getImage().getId()}}" class="bd-placeholder-img" width="200" height="250" alt="image">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <footer th:insert="~{fragments/footer.html :: footer}"></footer>
+</body>
+</html>
