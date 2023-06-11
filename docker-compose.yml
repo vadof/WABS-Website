@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  website:
+    build: .
+    restart: always
+    ports:
+      - '8083:8083'
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: mysql
+    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=wabs
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8084:8080'
+
+volumes:
+  mysql_data:
