@@ -35,7 +35,6 @@ public class PatchInitializer implements ApplicationRunner {
             Patch patch = new Patch();
             patch.setAll(createTopic(), new BigDecimal("1.0"), "Game release",
                     "Game release", LocalDateTime.now(), true, createImage());
-
             patchRepository.save(patch);
         }
     }
@@ -50,7 +49,7 @@ public class PatchInitializer implements ApplicationRunner {
     }
 
     private Image createImage() throws IOException {
-        Path path = Path.of("src/main/resources/static/images/patch_images/patch1.png");
+        Path path = Path.of("static/images/patch_images/patch1.png");
         byte[] imageBytes = Files.readAllBytes(path);
 
         Image image = new Image();
@@ -63,5 +62,4 @@ public class PatchInitializer implements ApplicationRunner {
         imageRepository.save(image);
         return image;
     }
-
 }

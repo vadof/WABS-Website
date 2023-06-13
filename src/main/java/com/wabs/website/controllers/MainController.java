@@ -35,7 +35,7 @@ public class MainController {
     }
 
     @PostMapping("/search")
-    public String searchPlayer(@RequestParam String username, Model model) {
+    public String searchPlayer(@RequestParam String username) {
         if (username.length() > 0) {
             return "redirect:/" + username + "/statistics";
         }
@@ -43,7 +43,7 @@ public class MainController {
     }
 
     @PostMapping("/email")
-    public String saveEmail(@RequestParam String email, Model model) {
+    public String saveEmail(@RequestParam String email) {
         if (emailRepository.searchByEmail(email) == null) {
             Email email1 = new Email();
             email1.setEmail(email);

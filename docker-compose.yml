@@ -5,9 +5,11 @@ services:
     build: .
     restart: always
     ports:
-      - '8083:8083'
+      - '8080:8080'
     depends_on:
       - mysqldb
+    volumes:
+      - game_files:/game_files
   mysqldb:
     image: mysql
     restart: always
@@ -20,7 +22,8 @@ services:
     image: adminer
     restart: always
     ports:
-      - '8084:8080'
+      - '8085:8080'
 
 volumes:
   mysql_data:
+  game_files:

@@ -131,7 +131,7 @@ public class AdminController {
 
     @PostMapping("/admin/patch/{id}/edit")
     public String editPatch(@PathVariable Long id, @RequestParam Long topicId, @RequestParam BigDecimal patch, @RequestParam String title,
-                           @RequestParam String description, @RequestParam String releaseDate,
+                            @RequestParam String description, @RequestParam String releaseDate,
                             @RequestParam("image") MultipartFile image) {
         adminService.updatePatch(id, topicId, patch, title, description, releaseDate, image);
         return "redirect:/admin/patch/" + id;

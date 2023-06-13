@@ -14,7 +14,6 @@ public class MultipartConfigConfigurator {
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
 
-        // Устанавливаем максимальный размер загружаемого файла в -1, что означает отсутствие ограничения
         factory.setMaxFileSize(DataSize.of(2, DataUnit.GIGABYTES));
         factory.setMaxRequestSize(DataSize.of(2, DataUnit.GIGABYTES));
 
