@@ -45,7 +45,7 @@ public class RegisterController {
 
             Email email1 = emailRepository.searchByEmail(email);
 
-            if (playerRepository.findByUsername(username) != null) {
+            if (playerRepository.findByUsername(username).isPresent()) {
                 model.addAttribute("errorMessage", "Username already exists!");
                 return "register";
             } else if (!password.equals(passwordRepeat)) {

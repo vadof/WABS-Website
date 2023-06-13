@@ -27,26 +27,32 @@ public class MatchController {
 
     @GetMapping("/{username}/matches")
     public String playerMatches(@PathVariable(value = "username") String username, Model model) {
-        Player player = playerRepository.findByUsername(username);
+        Optional<Player> optionalPlayer = playerRepository.findByUsername(username);
 
-        List<Match> matchList = matchRepository.findByPlayerId(player.getId());
-        List<PlayerMatchStatistics> playerMatchStatistics = new ArrayList<>();
-        Collections.reverse(matchList);
+        if (optionalPlayer.isPresent()) {
+            Player player = optionalPlayer.get();
 
-        for (Match match: matchList) {
-            for (PlayerMatchStatistics pms : match.getPlayerMatchStats()) {
-                if (pms.getPlayer().equals(player)) {
-                    playerMatchStatistics.add(pms);
+            List<Match> matchList = matchRepository.findByPlayerId(player.getId());
+            List<PlayerMatchStatistics> playerMatchStatistics = new ArrayList<>();
+            Collections.reverse(matchList);
+
+            for (Match match: matchList) {
+                for (PlayerMatchStatistics pms : match.getPlayerMatchStats()) {
+                    if (pms.getPlayer().equals(player)) {
+                        playerMatchStatistics.add(pms);
+                    }
                 }
             }
+
+            model.addAttribute("title", player.getUsername());
+            model.addAttribute("player", player);
+            model.addAttribute("matchList", matchList);
+            model.addAttribute("playerStats", playerMatchStatistics);
+
+            return "player-matches";
         }
 
-        model.addAttribute("title", player.getUsername());
-        model.addAttribute("player", player);
-        model.addAttribute("matchList", matchList);
-        model.addAttribute("playerStats", playerMatchStatistics);
-
-        return "player-matches";
+        return "redirect:/";
     }
 
     @GetMapping("/match/{id}/info")

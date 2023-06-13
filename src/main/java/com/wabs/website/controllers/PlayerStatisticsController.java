@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Optional;
+
 @Controller
 public class PlayerStatisticsController {
 
@@ -16,14 +18,14 @@ public class PlayerStatisticsController {
 
     @GetMapping("/{username}/statistics")
     public String statistics(@PathVariable(value = "username") String username, Model model) {
-        Player player = playerRepository.findByUsername(username);
+        Optional<Player> player = playerRepository.findByUsername(username);
 
-        if (player == null) {
+        if (player.isEmpty()) {
             return "redirect:/";
         }
 
         model.addAttribute("title", username);
-        model.addAttribute("player", player);
+        model.addAttribute("player", player.get());
 
         return "statistics";
     }
