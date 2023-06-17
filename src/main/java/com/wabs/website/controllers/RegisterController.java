@@ -6,6 +6,7 @@ import com.wabs.website.models.PlayerStatistics;
 import com.wabs.website.repository.EmailRepository;
 import com.wabs.website.repository.PlayerRepository;
 import com.wabs.website.repository.PlayerStatisticsRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +36,7 @@ public class RegisterController {
 
 
     @PostMapping("/register")
+    @Transactional
     public String registerPlayer(@RequestParam String username, @RequestParam String email,
                                @RequestParam String password, @RequestParam String passwordRepeat,
                                @RequestParam(name = "updates", required = false) boolean updates,
